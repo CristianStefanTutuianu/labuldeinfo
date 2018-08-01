@@ -25,9 +25,15 @@ let variabile;
 function aduagaMonede() {
   obiecte = joc.add.physicsGroup();
 
+  /*
+  initializeazaObiect(750, 400, 'moneda');
+  initializeazaObiect(750, 400, 'moneda');
+  initializeazaObiect(750, 400, 'moneda');
+  initializeazaObiect(750, 400, 'moneda');
+  initializeazaObiect(750, 400, 'moneda');
+  */
+
   initializeazaObiect(375, 400, 'moneda');
-
-
   initializeazaObiect(450, 100, 'moneda');
   initializeazaObiect(500, 100, 'moneda');
   initializeazaObiect(550, 100, 'moneda');
@@ -40,7 +46,6 @@ function aduagaMonede() {
 function adaugaPlatforme() {
   platforme = joc.add.physicsGroup();
   platforme.create(450, 150, 'platforma');
-
   /*
   * Task 1: Adauga o platforma astfel incat
   * sa colectezi o moneda. - 10 puncte.
@@ -55,6 +60,8 @@ function adaugaPlatforme() {
   * al monezilor (toate) - 10 puncte. Hack & slash!!!
   * */
 
+  platforme.create(150, 450, 'platforma');
+  platforme.create(250, 300, 'platforma');
 
   platforme.setAll('body.immovable', true);
 }
@@ -74,7 +81,7 @@ function initializeazaObiect(x, y, imagine) {
 
   // Atribuie obiectului proprietatea 'spin'(rotatie)
   obiect.animations.add('spin');
-  vitezaRotatie = 10;
+  vitezaRotatie = 20;
 
   obiect.animations.play('spin', vitezaRotatie, true);
 }
@@ -193,9 +200,12 @@ function initializeazaJoc() {
     // Conditie saritura
     if (butonSaritura.isDown && (jucator.body.onFloor() || jucator.body.touching.down)) {
       jucator.body.velocity.y = -400;
+    //jucator.body.velocity.y = -1000;
     }
 
     // Conditie victorie
+
+  //if(true) {
     if (jucatorulACastigat) {
       mesajVictorie.text = "AI CASTIGAT!!!";
     }
