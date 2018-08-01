@@ -15,6 +15,8 @@ let text;
 let mesajVictorie;
 let variabile;
 
+
+
 /*##########################################################
  ***                       Functii                       ***
  ###########################################################*/
@@ -24,7 +26,6 @@ let variabile;
  *************************/
 function aduagaMonede() {
   obiecte = joc.add.physicsGroup();
-
   initializeazaObiect(375, 400, 'moneda');
 
 
@@ -32,6 +33,12 @@ function aduagaMonede() {
   initializeazaObiect(500, 100, 'moneda');
   initializeazaObiect(550, 100, 'moneda');
   initializeazaObiect(600, 100, 'moneda');
+  /* initializeazaObiect(375, 500, 'moneda');
+  initializeazaObiect(450, 400, 'moneda');
+  initializeazaObiect(500, 400, 'moneda');
+  initializeazaObiect(550, 300, 'moneda');
+  initializeazaObiect(600, 300, 'moneda');*/
+
 }
 
 /***************************
@@ -39,7 +46,9 @@ function aduagaMonede() {
 ****************************/
 function adaugaPlatforme() {
   platforme = joc.add.physicsGroup();
-  platforme.create(450, 150, 'platforma');
+  platforme.create(150, 450, 'platforma');
+  platforme.create(250, 300, 'platforma');
+  //a doua varianta nu are platforme
 
   /*
   * Task 1: Adauga o platforma astfel incat
@@ -74,7 +83,7 @@ function initializeazaObiect(x, y, imagine) {
 
   // Atribuie obiectului proprietatea 'spin'(rotatie)
   obiect.animations.add('spin');
-  vitezaRotatie = 10;
+  vitezaRotatie = 50;
 
   obiect.animations.play('spin', vitezaRotatie, true);
 }
@@ -126,7 +135,7 @@ function initializeazaJoc() {
    ***************************************************/
   function incarcaTexturi() {
     // Seteaza culoarea de fundal
-    joc.stage.backgroundColor = '#af2345';
+    joc.stage.backgroundColor = '#42eef4';
 
     // Incarca artefacte
     joc.load.image('platforma', 'src/img/platformaTip1.png');
@@ -166,7 +175,7 @@ function initializeazaJoc() {
    *******************************************************/
   function updateazaJoc() {
 
-    text.text = "SCOR: " + scor;
+    text.text = "SCOR: " + scor; 
     joc.physics.arcade.collide(jucator, platforme);
     joc.physics.arcade.overlap(jucator, obiecte, managerObiecte);
     joc.physics.arcade.overlap(jucator, insigne, managerInsignaVictorie);
